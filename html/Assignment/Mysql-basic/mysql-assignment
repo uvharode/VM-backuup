@@ -1,0 +1,49 @@
+MYSQL Assignment
+s1-sud mysql
+s2-system mysql -u my_user -p
+
+Q1.Create database
+s3-create database DB;
+s4-use DB;
+
+Q2.Create table
+s5-create table emp_detail(Emp_id int,Fname varchar(20),Mname varchar(20),Lname varchar(20),City varchar(30),Salary double);
+
+Q3.Insert into table
+s6-insert into emp_detail value(4,'dev','pramod','jangde','ngp',24000);
+
+Q4.Concat First,Middle,Last name
+s7-select CONCAT(Fname,' ',Mname,' ',Lname) as 'FullName' from emp_detail where Salary > 16000;
+
+Q5.Select Fname where emp_id=2
+s8-select Fname from emp_detail where Emp_id=2;
+
+Q6.Display non-repeating Lname/City
+s9-select Distinct Lname from emp_detail;
+select Distinct City from emp_detail;
+
+Q7.Create New user & grant permission
+
+s10-create user 'end_user'@'localhost' identified by 'end_user';
+s11-grant select,insert,update,delete on * . * to 'end_user'@'localhost';
+
+s12-create user 'admin'@'localhost' identified by 'admin';
+s13-grant select,delete,insert,update,create,alter on * . * to 'admin'@'localhost';
+
+s14-create user 'super_admin'@'localhost' identified by 'super_admin';
+s15-grant all privileges on * . * to 'end_user'@'localhost';
+
+Q8. Logging to mysql prompt from linux prompt
+mysql -u my_user -h localhost -p
+
+Q9.create database
+create database db1;
+
+Q10.select database
+use db1;
+
+Q11.list all tables in db1
+show tables in db1;
+
+
+

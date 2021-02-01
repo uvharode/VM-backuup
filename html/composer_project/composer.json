@@ -1,0 +1,23 @@
+{
+    "name": "cybage/composer_project",
+    "authors": [
+        {
+            "name": "urvashi harode",
+            "email": "urvashih@cybage.com"
+        }
+    ],
+    "require": {
+        "kwn/number-to-words": "^1.12",
+        "twig/twig": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+
+    "autoload": {
+             "psr-4": 
+             {
+                 "App\\": "./"
+            }
+    }
+}

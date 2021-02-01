@@ -1,0 +1,224 @@
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="myCard standard-padding">
+        <form #f="ngForm" (ngSubmit)="onSubmitpost(f)">
+          <textarea
+            class="textarea"
+            name="text"
+            [(ngModel)]="text"
+            rows="2"
+            placeholder="Whats on Your mind..."
+          ></textarea>
+          <hr class="hor-line" />
+          <div class="row">
+            <div class="col-md-4">
+              <input
+                type="file"
+                id="uploadImage"
+                name="multimedia"
+                (change)="fileEvent($event)"
+                accept="image/*"
+                hidden
+              />
+              <label id="lblimage" for="uploadImage">
+                <i class="fas fa-image"></i>
+                Image</label
+              >
+            </div>
+            <div class="col-md-4">
+              <input
+                type="file"
+                id="uploadAudio"
+                name="multimedia"
+                (change)="fileEvent($event)"
+                accept="audio/*"
+                hidden
+              />
+              <label id="lblAudio" for="uploadAudio">
+                <i class="fas fa-file-audio"></i> Audio</label
+              >
+            </div>
+            <div class="col-md-4">
+              <input
+                type="file"
+                id="uploadVideo"
+                name="multimedia"
+                (change)="fileEvent($event)"
+                accept="video/*"
+                hidden
+              />
+              <label id="lblVideo" for="uploadVideo">
+                <i class="fas fa-file-video"></i>
+                Video</label
+              >
+            </div>
+          </div>
+          <button
+            class="btn btn-primary btn-lg float-right"
+            style="width: 100px"
+          >
+            Post <span class="fa fa-arrow-right"></span>
+          </button>
+        </form>
+        <br />
+        <br />
+      </div>
+      <!-- End of new post section -->
+      <br />
+      <div class="myCard" style="padding: 5px 0px 20px 0px">
+        <div class="container main-container">
+          <div *ngFor="let a of friendsPosts">
+            <div *ngIf="a.text == 'undefined'; else block"></div>
+            <ng-template #block>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <div class="rounded-circle pro-icon"></div>
+                    </div>
+                    <div class="col-md-11">
+                      <strong
+                        ><p class="heading">{{ a.user.firstname }}</p></strong
+                      >
+                      <p class="sub-heading">Posted On : 10-01-2021</p>
+                    </div>
+                  </div>
+                  <hr />
+
+                  <p class="card-text">{{ a.text }}</p>
+                  <hr />
+                  <button
+                    class="btn btn-success pull-right"
+                    (click)="btnclick(a.id)"
+                  >
+                    <a>Report</a>
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+
+            <div *ngIf="a.type === 'mp3'">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <div class="rounded-circle pro-icon"></div>
+                    </div>
+                    <div class="col-md-11">
+                      <strong><p class="heading">Rajashree Karad</p></strong>
+                      <p class="sub-heading">Posted On : 10-01-2021</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <audio controls>
+                    <source
+                      src="{{ Path }}{{ a.multimedia }}"
+                      height="auto"
+                      width="100%"
+                    />
+                  </audio>
+                  <hr />
+                  <button
+                    class="btn btn-success pull-right"
+                    (click)="btnclick(a.id)"
+                  >
+                    <a>Report</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              *ngIf="a.type === 'jpeg' || a.type === 'jpg' || a.type === 'png'"
+            >
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <div class="rounded-circle pro-icon"></div>
+                    </div>
+                    <div class="col-md-11">
+                      <strong><p class="heading">Rajashree Karad</p></strong>
+                      <p class="sub-heading">Posted On : 10-01-2021</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <img
+                    src="{{ Path }}{{ a.multimedia }}"
+                    accept="image/*"
+                    height="auto"
+                    width="100%"
+                  />
+                  <hr />
+                  <button
+                    class="btn btn-success pull-right"
+                    (click)="btnclick(a.id)"
+                  >
+                    <a>Report</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="a.type === 'mp4' || a.type === '3gp'">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-1" style="padding: 0px">
+                      <div class="rounded-circle pro-icon"></div>
+                    </div>
+                    <div class="col-md-11">
+                      <strong><p class="heading">Rajashree Karad</p></strong>
+                      <p class="sub-heading">Posted On : 10-01-2021</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <video width="100%" height="auto" controls>
+                    <source
+                      src="{{ Path }}{{ a.multimedia }}"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <hr />
+                  <button
+                    class="btn btn-success pull-right"
+                    (click)="btnclick(a.id)"
+                  >
+                    <a>Report</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="myCard">
+        <h5><strong>People You May Know</strong></h5>
+        <div class="card" *ngFor="let u of users">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="heading">
+                  <span class="fa fa-user-circle"></span> {{ u.firstname }}
+                  {{ u.lastname }}
+
+                  <button
+                    (click)="addfriend(u.id)"
+                    class="float-right btn-primary"
+                  >
+                    <span class="fa fa-plus"></span>
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- people you may know -->
+    </div>
+  </div>
+</div>

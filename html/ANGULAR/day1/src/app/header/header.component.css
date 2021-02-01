@@ -1,0 +1,10 @@
+nav{  
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    color: plum; 
+}
+a{
+    display: inline;
+
+}

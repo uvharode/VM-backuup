@@ -1,0 +1,47 @@
+aside
+{
+    text-align: center;
+    width: 20%;
+    background-color: wheat;
+}
+.left{
+    padding: 2%;
+    font-size: x-small;
+}
+
+
+section{
+    padding: 2%;
+    text-align: center;
+    width: 60%;
+    background-color: lightgray;
+}
+
+.main-data{
+    columns: 2;
+}
+div{
+                    width: 90%;
+                    margin: 10% auto;
+                    display: flex;
+                    flex-direction: row;
+                    height: 100%;
+}
+ul{
+
+    padding: 3%;
+}
+li{
+    text-align: center;
+    list-style: none;
+    padding: 10%;
+}
+img{
+    padding: 8%;
+    height: 30%;
+    width: 80%;
+}
+.ads{
+    padding: 2%;
+    font-size: x-small;
+}
